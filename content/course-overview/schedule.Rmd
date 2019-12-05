@@ -1,0 +1,128 @@
+---
+title: "Schedule"
+description: "Schedule"
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+*This schedule is tentative and is subject to change.*
+
+## Course Schedule
+
+```{r schedule-setup, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggweekly)
+library(rlang) # Needed for the ggweekly.R script to work
+source('../../R/ggweekly.R') # Fixes issue with loading PT Sans fonts with PDF output
+library(ggplot2)
+library(readxl)
+library(lubridate)
+
+options(knitr.kable.NA = '')
+
+semester <- 'Spring 2020'
+
+palette <- c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462',
+			 '#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f')
+
+meetups <- read_excel('../../Schedule.xlsx', sheet = 1)
+meetups$day <- as.Date(meetups$Date)
+meetups$label <- paste0('Meetup ', meetups$Time, '\n', meetups$Topic)
+# meetups$label <- meetups$Topic
+meetups$color <- '#000000'
+meetups$fill <- NA
+
+schedule <- meetups[,c('day', 'label', 'color', 'fill')]
+
+topics <- read_excel('../../Schedule.xlsx', sheet = 2)
+topics$Start <- as.Date(topics$Start)
+topics$End <- as.Date(topics$End)
+for(i in 1:nrow(topics)) {
+	schedule <- rbind(schedule, data.frame(
+		day = topics[i,]$Start,
+		label = topics[i,]$Topic,
+		color = '#000000',
+		fill = palette[i]
+	))
+	dates <- seq(topics[i,]$Start, topics[i,]$End, by = 'day')[-1]
+	for(j in seq_along(dates)) {
+		schedule <- rbind(schedule, data.frame(
+			day = dates[j],
+			label = NA,
+			color = NA,
+			fill = palette[i]
+		))
+	}
+}
+
+
+start_day <- lubridate::floor_date(min(meetups$day), "month")
+end_day <- lubridate::ceiling_date(max(meetups$day), "month") - 1
+
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+topics$Start <- format(topics$Start, format = '%A, %B %d, %Y')
+topics$End <- format(topics$End, format = '%A, %B %d, %Y')
+knitr::kable(topics)
+```
+
+## Meetups
+
+There will be weekly meetups. You are encouraged to attend as many as you can but recordings will generally be availabe the day after the meetup.
+
+Please join the meetup from your computer, tablet or smartphone: https://global.gotomeeting.com/join/851198509 
+
+You can also dial in using your phone. United States: +1 (571) 317-3122  
+Access Code: 851-198-509 
+
+New to GoToMeeting? Get the app now and be ready when your first meeting starts: 
+https://global.gotomeeting.com/install/851198509 
+
+
+[Presentation Signup Sheet](https://docs.google.com/spreadsheets/d/1OmBmPNfB3jbsMAbmdwgCUC8i2RY-3cg4u41RiTH7Nhw/edit?usp=sharing)
+
+```{r schedule-table, echo=FALSE, results='asis'}
+# meetups$Date <- format(meetups$Date, '%a, %b %d')
+meetups$Date <- format(meetups$Date, format = '%A, %B %d, %Y')
+knitr::kable(meetups[,c('Date','Time','Topic','Resources')], )
+```
+
+
+```{r schedule-figure, echo=FALSE, warning=FALSE, message=FALSE}
+# ggweek_planner(
+# 	start_day = start_day, 
+# 	end_day = end_day, 
+# 	show_month_boundaries = FALSE, 
+# 	show_month_start_day = FALSE,
+# 	week_start = "epiweek",
+# 	week_start_label = "week",
+# 	base_font_family = '',
+# 	font_label_text = 'Helvetica',
+# 	holidays = NULL,
+# 	highlight_days = schedule) +
+# 	ggplot2::ggtitle("EPSY 630 - Spring 2020") +  
+# 	ggplot2::facet_wrap(~ month, scales = 'free', ncol=1)
+
+schedule$label <- gsub('<br/>', '\n', schedule$label)
+
+months <- seq(start_day, end_day, by = "1 month")
+for(i in seq_along(months)) {
+	gcal <- ggweek_planner(
+		start_day = months[i],
+		end_day = months[i] + days_in_month(month(months[i])) - 1,	
+		show_month_boundaries = FALSE, 
+		show_month_start_day = FALSE,
+		week_start = "epiweek",
+		week_start_label = "week",
+		base_font_family = '',
+		font_label_text = 'Helvetica',
+		holidays = NULL,
+		highlight_days = schedule
+		) +
+		ggplot2::theme(plot.margin = ggplot2::margin(0.5, 0.5, 0.5, 0.5, "in")) +
+		ggplot2::ggtitle(paste0('EPSY 630 - ', semester, ' - ', month(months[i], label = TRUE, abbr = FALSE)))
+	print(gcal)
+}
+
+```
