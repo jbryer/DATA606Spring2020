@@ -9,8 +9,8 @@ date = "2018-01-04"
 
 **Instructor:** Jason Bryer, Ph.D.  
 **Class Meetup:** Wednesday 8:30pm to 9:30pm  
-**Office Hours:** By appointment  
-**Email:** <a href="mailto:jason.bryer@sps.cuny.edu?Subject=DATA606">jason.bryer@sps.cuny.edu</a>    
+**Office Hours:** Mondays 8:30pm to 9:30pm; Fridays 11:00am to 12:00pm    
+**Email:** <a href="mailto:jason.bryer@sps.cuny.edu">jason.bryer@sps.cuny.edu</a>    
 
 
 ### Course Description

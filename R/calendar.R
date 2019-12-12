@@ -12,16 +12,23 @@ semester <- 'Spring 2020'
 palette <- c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462',
 			 '#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f')
 
-meetups <- read_excel('Schedule.xlsx', sheet = 1)
+meetups <- read_excel('Schedule.xlsx', sheet = 'Meetups')
 meetups$day <- as.Date(meetups$Date)
-meetups$label <- paste0(meetups$Time, '\n', meetups$Topic)
+meetups$label <- paste0('Meetup ', meetups$StartTime, '\n', meetups$Topic)
 # meetups$label <- meetups$Topic
-meetups$color <- '#000000'
+meetups$color <- '#4A235A'
 meetups$fill <- NA
 
-schedule <- meetups[,c('day', 'label', 'color', 'fill')]
+officeHours <- read_excel('Schedule.xlsx', sheet = 'Office_Hours')
+officeHours$day <- as.Date(officeHours$Date)
+officeHours$label <- paste0('Office Hours\n', officeHours$StartTime, '')
+officeHours$color <- '#145A32'
+officeHours$fill <- NA
 
-topics <- read_excel('Schedule.xlsx', sheet = 2)
+schedule <- rbind(meetups[,c('day', 'label', 'color', 'fill')],
+				  officeHours[,c('day', 'label', 'color', 'fill')])
+
+topics <- read_excel('Schedule.xlsx', sheet = 'Schedule')
 topics$Start <- as.Date(topics$Start)
 topics$End <- as.Date(topics$End)
 for(i in 1:nrow(topics)) {
@@ -45,7 +52,22 @@ for(i in 1:nrow(topics)) {
 start_day <- lubridate::floor_date(min(meetups$day), "month")
 end_day <- lubridate::ceiling_date(max(meetups$day), "month") - 1
 
-# Full Calendar
+##### iCal
+
+source('R/createICS.R')
+
+meetups$starttime <- parse_date_time(paste0(as.character(meetups$Date), ' ', meetups$StartTime),
+							    orders = "%Y-%m-%d %H:%M %p", tz = "America/New_York")
+meetups$endtime <- parse_date_time(paste0(as.character(meetups$Date), ' ', meetups$EndTime),
+								   orders = "%Y-%m-%d %H:%M %p", tz = "America/New_York")
+meetups$location <- 'GoToMeeting'
+meetups$summary <- meetups$Topic
+meetups$description <- ''
+
+createICS(meetups) %>% cat()
+createICS(meetups) %>% write(file = 'docs/DATA606.ics')
+
+##### Full Calendar
 ggweek_planner(
 	start_day = start_day, 
 	end_day = end_day, 

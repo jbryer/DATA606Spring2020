@@ -11,6 +11,7 @@ editor_options:
 ## Course Schedule
 
 ```{r schedule-setup, echo=FALSE, warning=FALSE, message=FALSE}
+# devtools::install_github("gadenbuie/ggweekly")
 library(ggweekly)
 library(rlang) # Needed for the ggweekly.R script to work
 source('../../R/ggweekly.R') # Fixes issue with loading PT Sans fonts with PDF output
@@ -25,22 +26,29 @@ semester <- 'Spring 2020'
 palette <- c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462',
 			 '#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f')
 
-meetups <- read_excel('../../Schedule.xlsx', sheet = 1)
+meetups <- read_excel('../../Schedule.xlsx', sheet = 'Meetups')
 meetups$day <- as.Date(meetups$Date)
-meetups$label <- paste0('Meetup ', meetups$Time, '\n', meetups$Topic)
+meetups$label <- paste0('Meetup ', meetups$StartTime, '\n', meetups$Topic)
 # meetups$label <- meetups$Topic
-meetups$color <- '#000000'
+meetups$color <- '#4A235A'
 meetups$fill <- NA
 
-schedule <- meetups[,c('day', 'label', 'color', 'fill')]
+officeHours <- read_excel('../../Schedule.xlsx', sheet = 'Office_Hours')
+officeHours$day <- as.Date(officeHours$Date)
+officeHours$label <- paste0('Office Hours\n', officeHours$StartTime, '')
+officeHours$color <- '#145A32'
+officeHours$fill <- NA
 
-topics <- read_excel('../../Schedule.xlsx', sheet = 2)
+schedule <- rbind(meetups[,c('day', 'label', 'color', 'fill')],
+				  officeHours[,c('day', 'label', 'color', 'fill')])
+
+topics <- read_excel('../../Schedule.xlsx', sheet = 'Schedule')
 topics$Start <- as.Date(topics$Start)
 topics$End <- as.Date(topics$End)
 for(i in 1:nrow(topics)) {
 	schedule <- rbind(schedule, data.frame(
 		day = topics[i,]$Start,
-		label = topics[i,]$Topic,
+		label = paste0(topics[i,]$Topic, '\n\n\n'),
 		color = '#000000',
 		fill = palette[i]
 	))
@@ -85,7 +93,7 @@ https://global.gotomeeting.com/install/851198509
 ```{r schedule-table, echo=FALSE, results='asis'}
 # meetups$Date <- format(meetups$Date, '%a, %b %d')
 meetups$Date <- format(meetups$Date, format = '%A, %B %d, %Y')
-knitr::kable(meetups[,c('Date','Time','Topic','Resources')], )
+knitr::kable(meetups[,c('Date','StartTime','Topic','Resources')], )
 ```
 
 
