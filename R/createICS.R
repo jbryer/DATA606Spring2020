@@ -18,7 +18,9 @@ DESCRIPTION:Beschreibung des Termines
 END:VEVENT"
 
 ics_footer <- "
-END:VCALENDAR"
+END:VCALENDAR
+"
+
 
 # Input data.frame must have these columns:
 # * `starttime`
