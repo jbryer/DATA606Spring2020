@@ -2,8 +2,12 @@ library(stringr)
 
 ics_header <- "BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:http://data606.net
+PRODID:DATA606.net
+NAME:DATA 606 Spring 2020
+X-WR-CALNAME:DATA 606 Spring 2020
 CALSCALE:GREGORIAN
+TIMEZONE-ID:America/New_York
+X-WR-TIMEZONE:America/New_York
 METHOD:PUBLISH"
 
 ics_body <- "
