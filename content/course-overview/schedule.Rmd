@@ -6,7 +6,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-*This schedule is tentative and is subject to change.*
 
 ## Course Schedule
 
@@ -14,7 +13,9 @@ editor_options:
 # devtools::install_github("gadenbuie/ggweekly")
 library(ggweekly)
 library(rlang) # Needed for the ggweekly.R script to work
+library(configr)
 source('../../R/ggweekly.R') # Fixes issue with loading PT Sans fonts with PDF output
+source('../../R/createICS.R')
 library(ggplot2)
 library(readxl)
 library(lubridate)
@@ -66,8 +67,26 @@ for(i in 1:nrow(topics)) {
 
 start_day <- lubridate::floor_date(min(meetups$day), "month")
 end_day <- lubridate::ceiling_date(max(meetups$day), "month") - 1
-
 ```
+
+*This schedule is tentative and is subject to change.*
+
+```{r, echo=FALSE, results='hide'}
+config <- read.config('../../config.toml')
+outDir <- config$publishDir
+meetups$starttime <- parse_date_time(paste0(as.character(meetups$Date), ' ', meetups$StartTime),
+							    orders = "%Y-%m-%d %H:%M %p", tz = "America/New_York")
+meetups$endtime <- parse_date_time(paste0(as.character(meetups$Date), ' ', meetups$EndTime),
+								   orders = "%Y-%m-%d %H:%M %p", tz = "America/New_York")
+meetups$location <- 'GoToMeeting'
+meetups$summary <- meetups$Topic
+meetups$description <- ''
+
+ics.file <- paste0('../../', outDir, '/DATA606.ics')
+createICS(meetups) %>% write(file = ics.file)
+```
+
+[Click here to import the course calendar into your calendar application](/DATA606.ics)
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
 topics$Start <- format(topics$Start, format = '%A, %B %d, %Y')
