@@ -54,11 +54,11 @@ createICS <- function(df) {
 		ics_body <- str_replace(ics_body, "LOCATION:.*", paste0("LOCATION:", df$location[i]))
 		ics_body <- str_replace(ics_body, "DESCRIPTION:.*", paste0("DESCRIPTION:", df$description[i]))
 		ics_body <- str_replace(ics_body, "DTSTART:.*", paste0("DTSTART:", 
-								format(df$starttime[i], format = '%Y%m%dT%I%M%S')))
+								format(df$starttime[i], format = '%Y%m%dT%H%M%S')))
 		ics_body <- str_replace(ics_body, "DTEND:.*", paste0("DTEND:", 
-								format(df$endtime[i], format = '%Y%m%dT%I%M%S')))
+								format(df$endtime[i], format = '%Y%m%dT%H%M%S')))
 		ics_body <- str_replace(ics_body, "DTSTAMP:.*", paste0("DTSTAMP:", 
-								format(Sys.time(), format = '%Y%m%dT%I%M%S')))
+								format(Sys.time(), format = '%Y%m%dT%H%M%S')))
 		# create unique identifier
 		ics_body <- str_replace(ics_body, "UID:.*", paste0("UID:", paste0(df$starttime[i], df$endtime[i])))
 		ics_events <- paste0(ics_events, ics_body)
