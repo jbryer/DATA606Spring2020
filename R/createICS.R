@@ -58,6 +58,8 @@ createICS <- function(df) {
 	ics_events <- paste0(ics_header, ics_events)
 	ics_events <- paste0(ics_events, ics_footer)
 	
-	# write(ics_events, file = "output/events.ics")
+	# See https://stackoverflow.com/questions/33648182/online-ical-feed-wont-work
+	ics_events <- gsub('["\r\n", "\r", "\n"]', '\r\n', ics_events)
+	
 	return(ics_events)
 }
