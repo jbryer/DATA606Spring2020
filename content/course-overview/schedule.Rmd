@@ -64,14 +64,13 @@ for(i in 1:nrow(topics)) {
 	}
 }
 
-
 start_day <- lubridate::floor_date(min(meetups$day), "month")
 end_day <- lubridate::ceiling_date(max(meetups$day), "month") - 1
 ```
 
 *This schedule is tentative and is subject to change.*
 
-```{r, echo=FALSE, results='hide'}
+```{r createICS, echo=FALSE, results='hide'}
 config <- read.config('../../config.toml')
 outDir <- config$publishDir
 meetups$starttime <- parse_date_time(paste0(as.character(meetups$Date), ' ', meetups$StartTime),
@@ -88,7 +87,7 @@ createICS(meetups) %>% write(file = ics.file)
 
 [Click here to import the course calendar into your calendar application](/DATA606.ics)
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+```{r printTopics, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
 topics$Start <- format(topics$Start, format = '%A, %B %d, %Y')
 topics$End <- format(topics$End, format = '%A, %B %d, %Y')
 knitr::kable(topics)
