@@ -67,7 +67,7 @@ createICS <- function(df) {
 	ics_events <- paste0(ics_events, ics_footer)
 	
 	# See https://stackoverflow.com/questions/33648182/online-ical-feed-wont-work
-	ics_events <- gsub('["\r\n", "\r", "\n"]', '\r\n', ics_events)
+	ics_events <- gsub('["\n"]', '\r\n', ics_events)
 	
 	return(ics_events)
 }
