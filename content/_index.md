@@ -5,11 +5,17 @@ date = "2018-01-04"
 
 +++
 
+<!-- Calendly link widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+<!-- Calendly link widget end -->
+
+
 # DATA606 - Spring 2020
 
 **Instructor:** Jason Bryer, Ph.D.  
 **Class Meetup:** Wednesday 8:30pm to 9:30pm  
-**Office Hours:** Mondays 8:30pm to 9:30pm; Fridays 11:00am to 12:00pm    
+**Office Hours:** Mondays 8:30pm to 9:30pm; Fridays 11:00am to 12:00pm <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/data606/office-hours'});return false;">Schedule time to meet</a>   
 **Email:** <a href="mailto:jason.bryer@sps.cuny.edu">jason.bryer@sps.cuny.edu</a>    
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Random Numbers and Seeds in R"
 author: "Jason Bryer"
-date: 2020-02-10
+date: 2020-01-29
 draft: false
 categories: ["R"]
 tags: ["random numbers"]
@@ -11,9 +11,9 @@ tags: ["random numbers"]
 
 <p>To explore how R generates randome numbers, we will use the <code>rnorm</code> function. This function draws a random number from a normal distribution with a mean = 0 and standard deviation = 1 (though these can be changed with the <code>mean</code> and <code>sd</code> parameters). With <code>n = 1</code> we will get two random numbers.</p>
 <pre class="r"><code>rnorm(n = 1)</code></pre>
-<pre><code>## [1] -0.8434661</code></pre>
+<pre><code>## [1] 0.6294093</code></pre>
 <pre class="r"><code>rnorm(n = 1)</code></pre>
-<pre><code>## [1] -0.7998374</code></pre>
+<pre><code>## [1] 1.031991</code></pre>
 <p>Each time you run the command you will get a different number. The <code>set.seed</code> function will sets a seed to the random number generator so that each subsequent run will produce the same number.</p>
 <pre class="r"><code>set.seed(2112); rnorm(n = 1)</code></pre>
 <pre><code>## [1] 0.9243372</code></pre>
@@ -34,4 +34,4 @@ ggplot(data.frame(x = 1:100, y = random_numbers),
        aes(x = x, y = y)) + 
     geom_point() +
     xlab(&#39;Seed&#39;) + ylab(&#39;Random Number&#39;)</code></pre>
-<p><img src="/post/2020-02-10-random_numbers_and_seeds_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/2020-01-29-random_numbers_and_seeds_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
