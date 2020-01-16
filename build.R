@@ -3,6 +3,9 @@ if(!require(blogdown)) {
 	library(blogdown)
 }
 
+devtools::install_github("gadenbuie/ggweekly")
+
+
 # Setup (run only once per class)
 # blogdown::install_hugo()
 # blogdown::new_site()

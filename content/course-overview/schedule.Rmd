@@ -14,7 +14,7 @@ editor_options:
 library(ggweekly)
 library(rlang) # Needed for the ggweekly.R script to work
 library(configr)
-source('../../R/ggweekly.R') # Fixes issue with loading PT Sans fonts with PDF output
+# source('../../R/ggweekly.R') # Fixes issue with loading PT Sans fonts with PDF output
 source('../../R/createICS.R')
 library(ggplot2)
 library(readxl)
@@ -26,6 +26,8 @@ semester <- 'Spring 2020'
 
 palette <- c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462',
 			 '#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f')
+
+lastModified <- format(file.info('../../Schedule.xlsx')[1,]$mtime, '%B %d, %Y %I:%M%p')
 
 meetups <- read_excel('../../Schedule.xlsx', sheet = 'Meetups')
 meetups$day <- as.Date(meetups$Date)
@@ -68,7 +70,7 @@ start_day <- lubridate::floor_date(min(meetups$day), "month")
 end_day <- lubridate::ceiling_date(max(meetups$day), "month") - 1
 ```
 
-*This schedule is tentative and is subject to change.*
+*Last updated `r lastModified`. Note: Schedule is subject to change.*
 
 ```{r createICS, echo=FALSE, results='hide'}
 config <- read.config('../../config.toml')
@@ -106,7 +108,7 @@ New to GoToMeeting? Get the app now and be ready when your first meeting starts:
 https://global.gotomeeting.com/install/851198509 
 
 
-[Presentation Signup Sheet](https://docs.google.com/spreadsheets/d/1OmBmPNfB3jbsMAbmdwgCUC8i2RY-3cg4u41RiTH7Nhw/edit?usp=sharing)
+[Presentation Signup Sheet](https://docs.google.com/spreadsheets/d/1ZS-my1__uA6VvJpu8cyS5nsUxrjRPF-vS3_t5xN9Bgw/edit?usp=sharing)
 
 ```{r schedule-table, echo=FALSE, results='asis'}
 # meetups$Date <- format(meetups$Date, '%a, %b %d')
@@ -141,8 +143,7 @@ for(i in seq_along(months)) {
 		show_month_start_day = FALSE,
 		week_start = "epiweek",
 		week_start_label = "week",
-		base_font_family = '',
-		font_label_text = 'Helvetica',
+		font_label_family = 'Helvetica',
 		holidays = NULL,
 		highlight_days = schedule
 		) +

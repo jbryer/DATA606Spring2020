@@ -4,7 +4,7 @@ description = ""
 weight = 1
 +++
 
-You are responsible for presenting one practice homework problem during the semester. Please sign up as-soon-as possible as there are limited slots per week. Try to keep each presentation to five minutes or less. Sign-up on this Google Spreadsheet: [https://docs.google.com/spreadsheets/d/1OmBmPNfB3jbsMAbmdwgCUC8i2RY-3cg4u41RiTH7Nhw/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1OmBmPNfB3jbsMAbmdwgCUC8i2RY-3cg4u41RiTH7Nhw/edit?usp=sharing)
+You are responsible for presenting one practice homework problem during the semester. Please sign up as-soon-as possible as there are limited slots per week. Try to keep each presentation to five minutes or less. Sign-up on this Google Spreadsheet: [https://docs.google.com/spreadsheets/d/1ZS-my1__uA6VvJpu8cyS5nsUxrjRPF-vS3_t5xN9Bgw/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1ZS-my1__uA6VvJpu8cyS5nsUxrjRPF-vS3_t5xN9Bgw/edit?usp=sharing)
 
 GoToMeeting Connection Information:
 
