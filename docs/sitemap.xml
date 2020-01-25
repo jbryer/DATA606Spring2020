@@ -13,10 +13,6 @@
   </url>
   
   <url>
-    <loc>/course-overview/</loc>
-  </url>
-  
-  <url>
     <loc>/assignments/presentation/</loc>
   </url>
   
@@ -30,12 +26,16 @@
   </url>
   
   <url>
-    <loc>/assignments/</loc>
+    <loc>/course-overview/</loc>
   </url>
   
   <url>
     <loc>/chapters/chapter3/</loc>
     <lastmod>2017-04-29T18:36:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/assignments/</loc>
   </url>
   
   <url>
@@ -61,6 +61,11 @@
   
   <url>
     <loc>/chapters/chapter5/</loc>
+    <lastmod>2017-04-29T18:36:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/chapters/</loc>
     <lastmod>2017-04-29T18:36:24+02:00</lastmod>
   </url>
   
@@ -102,11 +107,6 @@
   
   <url>
     <loc>/chapters/bayesian/</loc>
-    <lastmod>2017-04-29T18:36:24+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/chapters/</loc>
     <lastmod>2017-04-29T18:36:24+02:00</lastmod>
   </url>
   

@@ -1,10 +1,10 @@
 +++
 title = "Assignments"
 description = ""
-weight = 2
+weight = 3
 alwaysopen = false
 +++
 
-{{%children style="h2" description="true"%}}
+{{%children style="h2" description="false"%}}
 
 

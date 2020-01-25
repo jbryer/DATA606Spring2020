@@ -1,9 +1,9 @@
 +++
 title = "Chapters"
 description = ""
-weight = 20
+weight = 5
 +++
 
-{{%children style="h2" description="true"%}}
+{{%children style="h2" description="false"%}}
 
 
