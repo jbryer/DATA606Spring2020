@@ -65,8 +65,7 @@ Click here to import the course calendar into your calendar application
 Please join the meetup from your computer, tablet or smartphone: https://global.gotomeeting.com/join/851198509
 You can also dial in using your phone. United States: +1 (571) 317-3122
 Access Code: 851-198-509
-New to GoToMeeting? Get the app now and be ready when your first meeting starts: https://global.gotomeeting.com/install/851198509
-Presentation Signup Sheet</description>
+New to GoToMeeting? Get the app now and be ready when your first meeting starts: https://global.gotomeeting.com/install/851198509</description>
     </item>
     
     <item>
@@ -229,7 +228,7 @@ Creating Equations with Daum Equation Editor Occasionally you will need to type 
       
       <guid>/post/2020-01-29-random_numbers_and_seeds/</guid>
       <description>To explore how R generates randome numbers, we will use the rnorm function. This function draws a random number from a normal distribution with a mean = 0 and standard deviation = 1 (though these can be changed with the mean and sd parameters). With n = 1 we will get two random numbers.
-rnorm(n = 1) ## [1] -0.15962 rnorm(n = 1) ## [1] -0.01114706 Each time you run the command you will get a different number.</description>
+rnorm(n = 1) ## [1] -1.098785 rnorm(n = 1) ## [1] 0.3891309 Each time you run the command you will get a different number.</description>
     </item>
     
     <item>

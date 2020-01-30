@@ -41,8 +41,9 @@ https://global.gotomeeting.com/install/851198509
 
 ```{r schedule-table, echo=FALSE, results='asis'}
 # meetups$Date <- format(meetups$Date, '%a, %b %d')
-meetups$Date <- format(meetups$Date, format = '%A, %B %d, %Y')
-knitr::kable(meetups[,c('Date','StartTime','Topic','Resources')], )
+meetups$Date <- format(meetups$Date, format = '%a, %b %d, %Y')
+knitr::kable(meetups[,c('Date','StartTime','Topic','Resources')], ) %>%
+	kable_styling(full_width = F)
 # meetups[,c('Date','StartTime','Topic','Resources')] %>% 
 # 	regulartable() %>% autofit()
 
