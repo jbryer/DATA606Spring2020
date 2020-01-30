@@ -7,11 +7,11 @@ editor_options:
 ---
 
 
-## Course Schedule
-
 ```{r schedule-setup, echo=FALSE, warning=FALSE, message=FALSE}
 library(readxl)
 library(lubridate)
+# library(flextable)
+library(kableExtra)
 
 options(knitr.kable.NA = '')
 
@@ -43,5 +43,8 @@ https://global.gotomeeting.com/install/851198509
 # meetups$Date <- format(meetups$Date, '%a, %b %d')
 meetups$Date <- format(meetups$Date, format = '%A, %B %d, %Y')
 knitr::kable(meetups[,c('Date','StartTime','Topic','Resources')], )
+# meetups[,c('Date','StartTime','Topic','Resources')] %>% 
+# 	regulartable() %>% autofit()
+
 ```
 

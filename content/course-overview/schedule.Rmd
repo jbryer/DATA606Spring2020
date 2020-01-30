@@ -7,8 +7,6 @@ editor_options:
 ---
 
 
-## Course Schedule
-
 ```{r schedule-setup, echo=FALSE, warning=FALSE, message=FALSE}
 # devtools::install_github("gadenbuie/ggweekly")
 library(ggweekly)
@@ -70,7 +68,7 @@ start_day <- lubridate::floor_date(min(meetups$day), "month")
 end_day <- lubridate::ceiling_date(max(meetups$day), "month") - 1
 ```
 
-*Last updated `r lastModified`. Note: Schedule is subject to change.*
+*Note: Schedule is subject to change. Last updated `r lastModified`.*
 
 ```{r createICS, echo=FALSE, results='hide'}
 config <- read.config('../../config.toml')
