@@ -1,0 +1,47 @@
+---
+title: "Meetups"
+description: "Meetups"
+weight: 2
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Course Schedule
+
+```{r schedule-setup, echo=FALSE, warning=FALSE, message=FALSE}
+library(readxl)
+library(lubridate)
+
+options(knitr.kable.NA = '')
+
+lastModified <- format(file.info('../../Schedule.xlsx')[1,]$mtime, '%B %d, %Y %I:%M%p')
+
+meetups <- read_excel('../../Schedule.xlsx', sheet = 'Meetups')
+meetups$day <- as.Date(meetups$Date)
+meetups$label <- paste0('Meetup ', meetups$StartTime, '\n', meetups$Topic)
+# meetups$label <- meetups$Topic
+meetups$color <- '#4A235A'
+meetups$fill <- NA
+```
+
+
+There will be weekly meetups. You are encouraged to attend as many as you can but recordings will generally be availabe the day after the meetup.
+
+Please join the meetup from your computer, tablet or smartphone: https://global.gotomeeting.com/join/851198509 
+
+You can also dial in using your phone. United States: +1 (571) 317-3122  
+Access Code: 851-198-509 
+
+New to GoToMeeting? Get the app now and be ready when your first meeting starts: 
+https://global.gotomeeting.com/install/851198509 
+
+
+[Presentation Signup Sheet](https://docs.google.com/spreadsheets/d/1ZS-my1__uA6VvJpu8cyS5nsUxrjRPF-vS3_t5xN9Bgw/edit?usp=sharing)
+
+```{r schedule-table, echo=FALSE, results='asis'}
+# meetups$Date <- format(meetups$Date, '%a, %b %d')
+meetups$Date <- format(meetups$Date, format = '%A, %B %d, %Y')
+knitr::kable(meetups[,c('Date','StartTime','Topic','Resources')], )
+```
+
