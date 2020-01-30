@@ -27,12 +27,8 @@
       
       <guid>/assignments/presentation/</guid>
       <description>You are responsible for presenting one practice homework problem during the semester. Please sign up as-soon-as possible as there are limited slots per week. Try to keep each presentation to five minutes or less. Sign-up on this Google Spreadsheet: https://docs.google.com/spreadsheets/d/1ZS-my1__uA6VvJpu8cyS5nsUxrjRPF-vS3_t5xN9Bgw/edit?usp=sharing
-GoToMeeting Connection Information:
-https://global.gotomeeting.com/join/890853557
-You can also dial in using your phone: (646) 749-3122
-Access Code: 890-853-557
 Choose a problem from the following list:
- Chapter 1 - Introduction to Data  Practice: Any odd numbered question.</description>
+ Chapter 1 - Introduction to Data  Practice: Any odd numbered question.  Chapter 2 - Summarizing Data  Practice: Any odd numbered question.</description>
     </item>
     
     <item>
@@ -228,7 +224,7 @@ Creating Equations with Daum Equation Editor Occasionally you will need to type 
       
       <guid>/post/2020-01-29-random_numbers_and_seeds/</guid>
       <description>To explore how R generates randome numbers, we will use the rnorm function. This function draws a random number from a normal distribution with a mean = 0 and standard deviation = 1 (though these can be changed with the mean and sd parameters). With n = 1 we will get two random numbers.
-rnorm(n = 1) ## [1] -1.098785 rnorm(n = 1) ## [1] 0.3891309 Each time you run the command you will get a different number.</description>
+rnorm(n = 1) ## [1] -0.5245998 rnorm(n = 1) ## [1] -0.1930891 Each time you run the command you will get a different number.</description>
     </item>
     
     <item>
