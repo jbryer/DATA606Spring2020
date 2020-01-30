@@ -6,10 +6,20 @@
     <description>Recent content in R on DATA606 - Spring 2020</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Random Numbers and Seeds in R</title>
+      <link>/post/2020-01-29-random_numbers_and_seeds/</link>
+      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020-01-29-random_numbers_and_seeds/</guid>
+      <description>To explore how R generates randome numbers, we will use the rnorm function. This function draws a random number from a normal distribution with a mean = 0 and standard deviation = 1 (though these can be changed with the mean and sd parameters). With n = 1 we will get two random numbers.
+rnorm(n = 1) ## [1] -0.00358404 rnorm(n = 1) ## [1] -0.6642311 Each time you run the command you will get a different number.</description>
+    </item>
     
     <item>
       <title>Getting Started with R</title>
