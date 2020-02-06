@@ -4,6 +4,7 @@
 install.packages(c('tidyverse', 'devtools', 'shiny', 'psych', 'reshape2',
 				   'openintro', 'OIdata', 'fivethrityeight', 'knitr'))
 devtools::install_github('jbryer/DATA606')
+devtools::install_github("seankross/lego")
 
 # Getting started with Lab 1
 library(DATA606)
