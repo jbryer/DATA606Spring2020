@@ -26,7 +26,9 @@ library(ggplot2)
 ## Announcements
 
 * NY R Conference will be May 8th and 9th. More info here: https://rstats.ai/nyr/ (You can use code landeR2020 for a 20% discount).
-* New post on random number: https://spring2020.data606.net/post/2020-01-29-random_numbers_and_seeds/
+* Two new posts on course website:
+	* Random numbers: https://spring2020.data606.net/post/2020-01-29-random_numbers_and_seeds/
+	* Use of colors: https://spring2020.data606.net/post/2020-03-03-colors/
 
 ## Presentations
 
