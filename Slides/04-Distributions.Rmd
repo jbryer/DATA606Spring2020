@@ -25,13 +25,13 @@ par(mar=c(2.5,1,2,1))
 
 ## Announcements
 
-Data Project
-
-* Proposals are due March 29th (tentatively).
-* Projects are to be done individually.
-* Pick any public data set to analyze. The goal is for you to do either a linear regression (preferred), null hypothesis test, ANOVA, or chi-squared test. 
-* Need to have at least three variables, typically two quantitative variables and one qualitative variable.
-* Information, including a template and example proposal, are located here: https://spring2020.data606.net/assignments/project/
+* No assignments due this Sunday.
+* Data Project
+	* Proposals are due March 29th (tentatively).
+	* Projects are to be done individually.
+	* Pick any public data set to analyze. The goal is for you to do either a linear regression (preferred), null hypothesis test, ANOVA, or chi-squared test. 
+	* Need to have at least three variables, typically two quantitative variables and one qualitative variable.
+	* Information, including a template and example proposal, are located here: https://spring2020.data606.net/assignments/project/
 
 
 ## Presentations
