@@ -37,7 +37,7 @@ Choose a problem from the following list:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/course-overview/schedule/</guid>
-      <description>Note: Schedule is subject to change. Last updated February 27, 2020 08:02AM.
+      <description>Note: Schedule is subject to change. Last updated March 05, 2020 07:57AM.
 Click here to import the course calendar into your calendar application
   Start End Topic    Monday, January 27, 2020 Sunday, February 02, 2020 Chapter 1 - Intro to Data  Monday, February 03, 2020 Sunday, February 09, 2020 Chapter 2 - Summarizing Data  Monday, February 10, 2020 Sunday, February 16, 2020 Chapter 3 - Probability  Monday, February 17, 2020 Sunday, March 01, 2020 Chapter 4 - Distributions  Monday, March 02, 2020 Sunday, March 08, 2020 Chapter 5 - Foundation for Inference  Monday, March 09, 2020 Sunday, March 15, 2020 Chapter 6 - Inference for Categorical Data  Monday, March 16, 2020 Sunday, March 22, 2020 Chapter 7 - Inference for Numerical Data  Monday, March 23, 2020 Sunday, April 19, 2020 Chapter 8 - Linear Regression  Wednesday, April 08, 2020 Thursday, April 16, 2020 Spring Recess  Monday, April 20, 2020 Sunday, May 03, 2020 Chapter 9 - Multiple and Logistic Regression  Monday, May 04, 2020 Wednesday, May 13, 2020 Intro to Bayesian Analysis  Thursday, May 14, 2020 Sunday, May 17, 2020 Final Exam    </description>
     </item>
@@ -233,7 +233,7 @@ Creating Equations with Daum Equation Editor Occasionally you will need to type 
       
       <guid>/post/2020-01-29-random_numbers_and_seeds/</guid>
       <description>To explore how R generates randome numbers, we will use the rnorm function. This function draws a random number from a normal distribution with a mean = 0 and standard deviation = 1 (though these can be changed with the mean and sd parameters). With n = 1 we will get two random numbers.
-rnorm(n = 1) ## [1] -1.949287 rnorm(n = 1) ## [1] -1.081714 Each time you run the command you will get a different number.</description>
+rnorm(n = 1) ## [1] -0.151309 rnorm(n = 1) ## [1] -1.467029 Each time you run the command you will get a different number.</description>
     </item>
     
     <item>
