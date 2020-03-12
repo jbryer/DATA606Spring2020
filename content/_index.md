@@ -115,7 +115,7 @@ Kruschke, J.K. (2014). *Doing Bayesian Data Analysis, Second Edition: A Tutorial
 
 ### Contact
 
-Office Hours (cell phone or using GoToMeeting): By appointment. You're encouraged to schedule an appointment, but you can try to call anytime.
+Office Hours (cell phone or using Zoom): By appointment. You're encouraged to schedule an appointment, but you can try to call anytime.
 
 You are encouraged to ask us questions on the ["Github Issues"](https://github.com/jbryer/DATA606Spring2020/issues) feature on the course repository where other students will be able to benefit from your inquiries. If you wish to ask a question in private, you can email the instructor directly.
 

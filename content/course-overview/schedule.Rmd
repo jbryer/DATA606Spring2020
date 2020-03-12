@@ -77,7 +77,7 @@ meetups$starttime <- parse_date_time(paste0(as.character(meetups$Date), ' ', mee
 							    orders = "%Y-%m-%d %H:%M %p", tz = "America/New_York")
 meetups$endtime <- parse_date_time(paste0(as.character(meetups$Date), ' ', meetups$EndTime),
 								   orders = "%Y-%m-%d %H:%M %p", tz = "America/New_York")
-meetups$location <- 'GoToMeeting'
+meetups$location <- 'Zoom'
 meetups$summary <- meetups$Topic
 meetups$description <- ''
 

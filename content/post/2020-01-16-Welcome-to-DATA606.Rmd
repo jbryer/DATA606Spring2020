@@ -13,7 +13,7 @@ Welcome to DATA606! My name is Dr. Jason Bryer and I will be your instructor for
 * [Join the Slack channel by clicking here](https://join.slack.com/t/data606spring2020/shared_invite/enQtOTIzOTM0NzYwMDM5LTRhYzIzODRlOWZkZmUwMGVhZGMzYmE0NDkxYzc0MzA5NGVmMjc0MmRjZTIzMGM3ZjI0NTkzYjVmNjhhOTM3Nzc). This will be our primary mode of communication. For private communications, you can either send private Slack messages or email me at [jason.bryer@sps.cuny.edu](mailto:jason.bryer@sps.cuny.edu).
 * Introduce yourself in the Getting Acquainted forum on Blackboard.
 * Once you go through the syllabus, try starting Lab 1 as soon as you can. This will require you to install R and RStudio and will help get you get acquainted with R.
-* The best way to reach me is by Slack or email at [jason.bryer@sps.cuny.edu](mailto:jason.bryer@sps.cuny.edu). If you would prefer to talk on the phone or setup a GoToMeeting session, it is best to suggest some times by email first.
+* The best way to reach me is by Slack or email at [jason.bryer@sps.cuny.edu](mailto:jason.bryer@sps.cuny.edu). If you would prefer to talk on the phone or setup a Zoom session, it is best to suggest some times by email first.
 * Our meetups will be on Wednesdays from 8:30pm to 9:30pm.
 * I am looking forward to getting to know everyone and a fantastic semester! Good luck!
 

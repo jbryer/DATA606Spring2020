@@ -23,6 +23,7 @@ set.seed(2112)
 library(ggplot2)
 library(openintro)
 library(DATA606)
+library(tidyverse)
 par(mar=c(2.5,1,2,1))
 
 PlotDist <- function(alpha, from = -5, to = 5, n = 1000, filename = NULL,
@@ -380,6 +381,76 @@ Kelly M. [*Emily Dickinson and monkeys on the stair Or: What is the significance
 * This is especially important to research: if we conduct a study, we want to focus on finding meaningful results (we want observed differences to be real, but also large enough to matter).
 * The role of a statistician is not just in the analysis of data, but also in planning and design of a study.
 
+
+## Review: Sampling Distribution
+
+```{r, echo=FALSE, fig.align='center', warning=FALSE, message=FALSE, fig.width = 8, fig.height=5.5}
+set.seed(123)
+n <- 1e5
+pop2 <- runif(n, 0, 5)
+# pop2 <- rnorm(n, mean = 100, sd = 15)
+samp <- sample(pop2, size = 30)
+se <- sd(samp) / sqrt(length(samp))
+
+hist.samp <- density(samp, 
+				  from = mean(samp) - 1.96 * sd(samp), 
+				  to = mean(samp) + 1.96 * sd(samp))
+hist.samp <- data.frame(x = hist.samp$x, y = hist.samp$y)
+hist.sampdist <- data.frame(x = seq(mean(samp) - 1.96 * se,
+									mean(samp) + 1.96 * se, 0.01))
+hist.sampdist$y <- dnorm(hist.sampdist$x, mean = mean(samp), sd = se)
+
+
+ggplot(data = data.frame(x = range(samp)), aes(x)) +
+	geom_density(data = data.frame(x = pop2), alpha = 0.2) +
+	geom_vline(xintercept = mean(pop2)) +
+	xlim(mean(samp) - 3 * sd(samp), mean(samp) + 3 * sd(samp)) + ylab("") +
+	ylim(c(0, max(hist.sampdist$y))) +
+	theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+	ggtitle('Distribution of Population (in black)',
+			subtitle = paste0('Population mean = ', round(mean(pop2), digits = 3), 
+							  ' sample n = ', length(samp), ''))
+```
+
+## Review: Sampling Distribution
+
+```{r, echo=FALSE, fig.align='center', warning=FALSE, message=FALSE, fig.width = 8, fig.height=5.5}
+ggplot(data = data.frame(x = range(samp)), aes(x)) +
+	geom_density(data = data.frame(x = pop2), alpha = 0.2) +
+	geom_vline(xintercept = mean(pop2)) +
+	geom_ribbon(data = hist.samp, aes(x = x, ymin = 0, ymax = y), fill = 'blue', alpha = 0.5) +
+	geom_density(data = data.frame(x = samp), color = 'blue') +
+	xlim(mean(samp) - 3 * sd(samp), mean(samp) + 3 * sd(samp)) + ylab("") +
+	ylim(c(0, max(hist.sampdist$y))) + 
+	theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+		ggtitle('Distribution of Population (in black), Sample (in blue)',
+			subtitle = paste0('Population mean = ', round(mean(pop2), digits = 3), 
+							  ' sample n = ', length(samp), ''))
+```
+
+
+## Review: Sampling Distribution
+
+```{r, echo=FALSE, fig.align='center', warning=FALSE, message=FALSE, fig.width = 8, fig.height=5.5}
+ggplot(data = data.frame(x = range(samp)), aes(x)) +
+	geom_density(data = data.frame(x = pop2), alpha = 0.2) +
+	geom_vline(xintercept = mean(pop2)) +
+	geom_ribbon(data = hist.samp, aes(x = x, ymin = 0, ymax = y), fill = 'blue', alpha = 0.5) +
+	geom_density(data = data.frame(x = samp), color = 'blue') +
+	geom_ribbon(data = hist.sampdist, aes(x = x, ymin = 0, ymax = y), fill = 'maroon', alpha = 0.5) +
+	stat_function(fun = dnorm, n = 1000,
+				  args = list(mean = mean(samp), sd = se), color = 'maroon') +
+	xlim(mean(samp) - 3 * sd(samp), mean(samp) + 3 * sd(samp)) + ylab("") +
+	ylim(c(0, max(hist.sampdist$y))) +
+	theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+	ggtitle('Distribution of Population (in black), Sample (in blue), and Sampling Distribution (in maroon)',
+			subtitle = paste0('Population mean = ', round(mean(pop2), digits = 3), 
+							  ' sample n = ', length(samp), ''))
+```
+
+
+# Bootstrappping
+
 ## Bootstrapping
 
 * First introduced by Efron (1979) in [*Bootstrap Methods: Another Look at the Jackknife*](https://projecteuclid.org/euclid.aos/1176344552).
@@ -471,3 +542,34 @@ head(boot.samples.median)
 c(mean(boot.samples.median) - 1.96 * sd(boot.samples.median), 
   mean(boot.samples.median) + 1.96 * sd(boot.samples.median))
 ```
+
+## Review: Add Bootstrap Distribution
+
+```{r, echo=FALSE, fig.align='center', warning=FALSE, message=FALSE, fig.width = 8, fig.height=5.5}
+pop_mean <- mean(pop2)
+boot.samples <- numeric(1000) # 1,000 bootstrap samples
+for(i in seq_along(boot.samples)) { 
+	tmp <- sample(samp, size = length(samp1), replace = TRUE)
+	boot.samples[i] <- mean(tmp)
+}
+hist.boot <- data.frame(x = seq(mean(boot.samples) - 1.96 * sd(boot.samples),
+								mean(boot.samples) + 1.96 * sd(boot.samples), 0.01))
+hist.boot$y <- dnorm(hist.boot$x, mean = mean(boot.samples), sd = sd(boot.samples))
+ggplot(data = data.frame(x = pop2)) +
+	geom_density(data = data.frame(x = pop2), aes(x = x), alpha = 0.2) +
+	geom_vline(xintercept = pop_mean) +
+	geom_ribbon(data = hist.boot, aes(x = x, ymin = 0, ymax = y), fill = 'green', alpha = 0.5) +
+	geom_density(data = data.frame(x = boot.samples), aes(x = x), color = 'green') +
+	geom_ribbon(data = hist.samp, aes(x = x, ymin = 0, ymax = y), fill = 'blue', alpha = 0.5) +
+	geom_density(data = data.frame(x = samp), aes(x = x), color = 'blue') +
+	geom_ribbon(data = hist.sampdist, aes(x = x, ymin = 0, ymax = y), fill = 'maroon', alpha = 0.5) +
+	stat_function(fun = dnorm, n = 1000,
+				  args = list(mean = mean(samp), sd = se), color = 'maroon') +
+	xlim(mean(samp) - 3 * sd(samp), mean(samp) + 3 * sd(samp)) + ylab("") +
+	ylim(c(0, max(c(hist.sampdist$y, hist.boot$y)))) +
+	theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+	ggtitle('Distribution of Population (in black), Sample (in blue), and Sampling Distribution (in maroon)',
+			subtitle = paste0('Population mean = ', round(mean(pop2), digits = 3), 
+							  ' sample n = ', length(samp), ''))
+```
+
