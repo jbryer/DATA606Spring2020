@@ -1,6 +1,7 @@
 ---
 title: "DATA606 - Linear Regression<br/>Part 2"
 author: Jason Bryer, Ph.D.
+date: April 1, 2020
 knit: (function(inputFile, encoding) { input.dir <- normalizePath(dirname(inputFile)); rmarkdown::render(input = inputFile, encoding = encoding, quiet=FALSE, output_file = paste0(input.dir,'/../docs/slides/', tools::file_path_sans_ext(basename(inputFile)), '.html')); })
 output:
   ioslides_presentation:
@@ -29,6 +30,12 @@ options(width=100)
 par(mar=c(2.5,1,2,1))
 
 ```
+
+## Presentations
+
+* 8.21 [Adam Gersowitz](https://rpubs.com/agersowitz/592205)
+* 8.23 Kevin Potter
+* 8.25 Sung Lee
 
 
 ## NYS Report Card
