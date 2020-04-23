@@ -1,7 +1,7 @@
 ---
 title: "DATA606 - Multiple Regression"
 author: Jason Bryer, Ph.D.
-date: November 13, 2019
+date: April 22, 2020
 knit: (function(inputFile, encoding) { input.dir <- normalizePath(dirname(inputFile)); rmarkdown::render(input = inputFile, encoding = encoding, quiet=FALSE, output_file = paste0(input.dir,'/../docs/slides/', tools::file_path_sans_ext(basename(inputFile)), '.html')); })
 output:
   ioslides_presentation:
@@ -42,27 +42,17 @@ printLaTeXFormula <- function(fit, digits=2) {
 
 ```
 
-## Announcements
-
-* Meetup next week (November 20) may be canceled.
-* No meetup November 27 (Thanksgiving).
-* There will not be a lab or homework for the Bayesian unit.
-
 
 ## Meetup Presentations
 
-* William Outcault (8.11)
-* Amit Kapoor (8.21)
-* Eunkyu Hahm (8.23)
-* Kristen Gillespie-Lynch (8.27)
-
-Recorded Presentations
+* 8.33 [David Moste](https://rpubs.com/dmoste/598615)
+* Chitrarth Kaushik	
 
 
 ## Weight of Books
 
 ```{r}
-data(allbacks, package='DAAG')
+allbacks <- read.csv('../course_data/allbacks.csv')
 head(allbacks)
 ```
 
@@ -78,7 +68,7 @@ $$ \hat{weight} = `r round(lm.out$coefficients[[1]])` + `r prettyNum(lm.out$coef
 $$ R^2 = `r round(cor(allbacks$weight, allbacks$volume) ^2 * 100)`\% $$
 
 ```{r, echo=FALSE, fig.width=5, fig.height=3.5}
-ggplot(allbacks, aes(x=volume, y=weight)) + geom_point() + geom_smooth(method='lm')
+ggplot(allbacks, aes(x=volume, y=weight)) + geom_point() + geom_smooth(method='lm', formula = y ~ x)
 ```
 
 ## Modeling weights of books using volume
@@ -117,7 +107,7 @@ $$ \hat{weight} = 197.96 + 0.72 volume - 184.05 \times 1 $$
 ## Visualizing the linear model {.flexbox .vcenter}
 
 ```{r, echo=FALSE, fig.width=7, fig.height=5}
-ggplot(allbacks, aes(x=volume, y=weight, color=cover, shape=cover)) + geom_point() + geom_smooth(method='lm', fill=NA)
+ggplot(allbacks, aes(x=volume, y=weight, color=cover, shape=cover)) + geom_point() + geom_smooth(method='lm', formula = y ~ x, fill=NA)
 ```
 
 
@@ -177,7 +167,7 @@ summary(lm.poverty)
 
 ```{r, echo=FALSE, fig.width=6, fig.height=4.5}
 ggplot(poverty, aes(x=female_house, y=poverty)) + geom_point() + 
-	geom_smooth(method='lm', fill=NA) + 
+	geom_smooth(method='lm', formula = y ~ x, fill=NA) + 
 	xlab('% Female Householder') + ylab('% in Poverty')
 ```
 
@@ -196,12 +186,10 @@ Using ANOVA we can calculate the explained variability and total variability in 
 
 ## Sum of Squares
 
-<center>
 ```{r, results='asis'}
 anova.poverty <- anova(lm.poverty)
 print(xtable(anova.poverty, digits = 2), type='html')
 ```
-</center>
 
 <br />
 
