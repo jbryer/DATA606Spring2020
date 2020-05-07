@@ -32,11 +32,7 @@ par(mar=c(2.5,1,2,1))
 
 ## Meetup Presentations
 
-* 1.41 - Suwarman Sufian
-* 7.11 - Mario Pena
-* Tamiko Jenkins	
-
-* 3.17 [Sean Finn](https://drive.google.com/file/d/17O9q8OJnXOnvi4sIY575ewugSuHmDsQy/view?usp=sharing)
+* 8.32 Neil Shah
 
 
 ## Bayesian Analysis
@@ -59,7 +55,7 @@ Consider the following data from a cancer test:
 
 * 1% of women have breast cancer (and therefore 99% do not).
 * 80% of mammograms detect breast cancer when it is there (and therefore 20% miss it).
-* 9.6% of mammograms detect breast cancer when it???s not there (and therefore 90.4% correctly return a negative result).
+* 9.6% of mammograms detect breast cancer when it's not there (and therefore 90.4% correctly return a negative result).
 
 &nbsp;        | Cancer (1%) | No Cancer (99%)
 --------------|-------------|-----------------
@@ -71,14 +67,14 @@ Test negative | 20%         |  90.4%
 
 Now suppose you get a positive test result. What are the chances you have cancer? 80%? 99%? 1%?
 
-* Ok, we got a positive result. It means we???re somewhere in the top row of our table. Let???s not assume anything ??? it could be a true positive or a false positive.
+* Ok, we got a positive result. It means we're somewhere in the top row of our table. Let's not assume anything - it could be a true positive or a false positive.
 * The chances of a true positive = chance you have cancer * chance test caught it = 1% * 80% = .008
-* The chances of a false positive = chance you don???t have cancer * chance test caught it anyway = 99% * 9.6% = 0.09504
+* The chances of a false positive = chance you don't have cancer * chance test caught it anyway = 99% * 9.6% = 0.09504
 
-&nbsp;        | Cancer (1%)       | No Cancer (99%)
---------------|-------------------|-----------------
-Test postive  | True +: 1% * 80%  | False +: 99% * 9.6%
-Test negative | False -: 1% * 20% | True -: 99% * 90.4%
+&nbsp;        | Cancer (1%)       | No Cancer (99%)      |
+--------------|-------------------|----------------------|-------------
+Test postive  | True +: 1% * 80%  | False +: 99% * 9.6%  | **10.304%**
+Test negative | False -: 1% * 20% | True -: 99% * 90.4%  | **89.696%**
 
 ## How accurate is the test?
 
@@ -86,7 +82,10 @@ $$ Probability = \frac{desired\quad event}{all\quad possibilities} $$
 
 The chance of getting a real, positive result is .008. The chance of getting any type of positive result is the chance of a true positive plus the chance of a false positive (.008 + 0.09504 = .10304).
 
+$$P(C | P) = \frac{P(P|C) P(C)}{P(P)} = \frac{.8 * .01}{.008 + 0.095} \approx .078$$
+
 **So, our chance of cancer is .008/.10304 = 0.0776, or about 7.8%.**
+
 
 ## Bayes Formula
 
@@ -110,7 +109,7 @@ Our strategy:
 For example, we initially caught 20 fish, marked them, returned them to the pond. We then caught another 20 fish and 5 of them were marked (i.e they were caught the first time).
 
 <font size='-2'>
-Adopted from Rasmath B????th useR! 2015 workshop: http://www.sumsar.net/files/academia/user_2015_tutorial_bayesian_data_analysis_short_version.pdf
+Adopted from Rasmath Bääth useR! 2015 workshop: http://www.sumsar.net/files/academia/user_2015_tutorial_bayesian_data_analysis_short_version.pdf
 </font>
 
 ## Strategy for fitting a model {.flexbox .vcenter}
@@ -124,7 +123,7 @@ head(n_fish, n=10)
 hist(n_fish, main="Prior Distribution")
 ```
 
-## Strategy for fitting a model {.flexbox .vcenter}
+## Strategy for fitting a model
 
 Step 2: Plug in each draw into the generative model which generates "fake" data.
 
@@ -178,8 +177,11 @@ abline(v=quantile(post_fish, probs=c(.25, .75)), col='green')
 Consider a pool table of length one. An 8-ball is thrown such that the likelihood of its stopping point is uniform across the entire table (i.e. the table is perfectly level). The location of the 8-ball is recorded, but not known to the observer. Subsequent balls are thrown one at a time and all that is reported is whether the ball stopped to the left or right of the 8-ball. Given only this information, what is the position of the 8-ball? How does the estimate change as more balls are thrown and recorded?
 
 ```{r, eval=FALSE}
-shiny_demo('BayesBilliards', package='DATA606')
+DATA606::shiny_demo('BayesBilliards', package='DATA606')
 ```
 
 See also: http://www.bryer.org/post/2016-02-21-bayes_billiards_shiny/
+
+
+
 
